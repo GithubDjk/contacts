@@ -1,0 +1,18 @@
+<!-- app/views/kaminari/bootstrap-4/_paginator.html.erb -->
+<nav>
+  <ul class="pagination justify-content-center">
+    <li class="page-item <%= 'disabled' if @contacts.prev_page.nil? %>">
+      <%= link_to 'Previous', contacts_path(page: @contacts.prev_page), class: 'page-link' %>
+    </li>
+
+    <% (1..@contacts.total_pages).each do |page_number| %>
+      <li class="page-item <%= 'active' if page_number == @contacts.current_page %>">
+        <%= link_to page_number, contacts_path(page: page_number), class: 'page-link' %>
+      </li>
+    <% end %>
+
+    <li class="page-item <%= 'disabled' if @contacts.next_page.nil? %>">
+      <%= link_to 'Next', contacts_path(page: @contacts.next_page), class: 'page-link' %>
+    </li>
+  </ul>
+</nav>
