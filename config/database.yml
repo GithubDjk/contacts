@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: contacts
-  username: username
+  username: dipendra
   password: password
 
   # The specified database role being used to connect to postgres.
