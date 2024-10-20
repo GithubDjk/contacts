@@ -1,9 +1,17 @@
-<!-- app/views/contacts/index.html.erb -->
 <h1 class="mt-5">Contacts</h1>
 
 <div class="mb-3">
   <%= link_to 'New Contact', new_contact_path, class: "btn btn-primary" %>
 </div>
+
+<%= form_with url: contacts_path, method: :get, local: true, class: 'mb-3' do %>
+  <div class="input-group">
+    <input type="text" name="search" value="<%= params[:search] %>" class="form-control" placeholder="Search by name">
+    <div class="input-group-append">
+      <%= button_tag 'Search', type: 'submit', class: 'btn btn-secondary' %>
+    </div>
+  </div>
+<% end %>
 
 <table class="table table-striped">
   <thead>
@@ -22,11 +30,10 @@
         <td><%= contact.email %></td>
         <td><%= link_to 'Show', contact, class: "btn btn-info btn-sm" %></td>
         <td><%= link_to 'Edit', edit_contact_path(contact), class: "btn btn-warning btn-sm" %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        <td><%= link_to 'Delete Contact', contacts_path(contact), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= paginate @contacts, theme: 'bootstrap-4' %>
-

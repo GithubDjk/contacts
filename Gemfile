@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 gem 'kaminari'
 gem 'bootstrap', '~> 5.1.3'
 gem 'kaminari-bootstrap'
+gem 'jquery-rails' # jQuery for front-end
 
 
 group :development, :test do

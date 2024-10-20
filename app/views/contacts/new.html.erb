@@ -1,33 +1,34 @@
 <h1 class="mt-5">New Contact</h1>
 
-<%= form_with model: @contact, class: 'form', local: true do |form| %>
+<%= form_with(model: @contact, local: true) do |form| %>
   <% if @contact.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h4>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
       <ul>
-        <% @contact.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="mb-3">
-    <%= form.label :name, class: "form-label" %>
+  <div class="form-group">
+    <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :phone, class: "form-label" %>
-    <%= form.text_field :phone, class: "form-control" %>
+  <div class="form-group">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :email, class: "form-label" %>
-    <%= form.text_field :email, class: "form-control" %>
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= form.submit 'Create Contact', class: "btn btn-primary" %>
   </div>
 <% end %>

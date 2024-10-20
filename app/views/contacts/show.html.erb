@@ -1,0 +1,16 @@
+<h1 class="mt-5">Contact Details</h1>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @contact.name %></h5>
+    <p class="card-text"><strong>Phone:</strong> <%= @contact.phone_number %></p>
+    <p class="card-text"><strong>Email:</strong> <%= @contact.email %></p>
+  </div>
+</div>
+
+<div class="mt-3">
+  <%= link_to 'Edit Contact', edit_contact_path(@contact), class: "btn btn-warning" %>
+  <%= link_to 'Back to Contacts', contacts_path, class: "btn btn-secondary" %>
+  
+  <%= link_to 'Delete Contact', contacts_path(@contact), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+</div>
